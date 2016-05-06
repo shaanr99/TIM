@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>dbconnect</title>
+</head>
+
+<body>
+
+		<?php
+			$servername = "foltz-pc";
+			$username = htmlspecialchars($_POST['username']);
+			$password = htmlspecialchars($_POST['pwd']);
+			$dbname = "TIM";
+			
+			// Create connection
+			$mysqli = new mysqli($servername, 'shaanr', 'T3stpil0t', $dbname);
+			if ($mysqli->connect_errno) {
+				echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+			}
+			// check user login
+			$sql = "SELECT userName, userPassword FROM Users WHERE userName='$username' AND userPassword='$password';";
+			//echo $sql;
+			if (!$mysqli->multi_query($sql)) {
+				echo "CALL failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			}
+			
+			do {
+				if ($res = $mysqli->store_result()) {
+					//printf("---\n");
+					//var_dump($res->fetch_all());
+					if ($mysqli->affected_rows=0){
+						echo "error";
+					}
+					$res->free();
+				} else {
+					if ($mysqli->errno) {
+						echo "Store failed: (" . $mysqli->errno . ") " . $mysqli->error;
+					}
+				}
+			} while ($mysqli->more_results() && $mysqli->next_result());
+?>
+
+</body>
+</html>

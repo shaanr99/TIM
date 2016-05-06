@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time in Motion</title>
+
+	</head>
+	<body>
+		<h1>Time in Motion</h1>
+		<form action="dbconnect.php" method="post">
+			<p>Username: <input type="text" name="username" /></p>
+			<p>Password: <input type="password" name="pwd" /></p>
+			<p><input type="submit" /></p>
+		</form>
+	</body>
+</html>
