@@ -16,32 +16,37 @@
             if ($num_rows <= 0){
                 die('Error logging in');
             }
-            // Get a list of activities that the user can select from
-            function populateSelect()
-            {
-                global $con;
-                $sql = "SELECT activityID, activityName FROM Activity";
-                $activityList = $con->query($sql);
-                while ($row = $activityList->fetch_assoc()){
-                        printf("<option value='" . $row["activityID"] . "'>" . $row["activityName"] . "</option>");
-                }
+            else {
+                while ($row = mysql_fetch_assoc($results)){}
+                $uid = $row['userID'];
             }
+
         ?>
 
 
         <meta charset="utf-8" />
-        <title>Connected:  <?php printf($name["dbname"]);?></title>
+        <title>Connected:  <?php echo mysql_get_host_info($con) ;?></title>
+        <script>
+            function processClick(location_name) {
+                document.getElementById("frmSelection").action = location_name;
+                document.getElementById("frmSelection").submit();
+                return;
+            }
+        </script>
     </head>
     <body>
-        <form action="processSelection.php" method="POST">
+        <form action="" method="POST" id="frmSelection">
             <fieldset>
-                <input type="button" id="btnAddUser" value="Add New User" onclick="document.location = 'AddNewUser.php';" >
-                <input type="button" id="btnModifyUser" value="Change User Attributes">
-                <input type="button" id="btnEnterTime" value="Enter time">
-                <input type="button" id="btnReports" value="View Reports">
+                <legend>Please select an option from the list below</legend>
+                <input type="button" id="btnAddUser" value="Add New User" onclick="processClick('AddNewUser.php');" >
+                <input type="button" id="btnModifyUser" value="Change User Attributes" onclick="processClick('ModifyUser.php');">
+                <input type="button" id="btnEnterTime" value="Enter time" onclick="processClick('EnterTime.php');">
+                <input type="button" id="btnReports" value="View Reports" onclick="processClick('Reports.php');">
                 <input type="hidden" name="uid" value="<?php echo $uid ?>">
+                <input type="hidden" name="uname" value="<?php echo $login_name ?>">
+                <input type="hidden" name="upwd" value="<?php echo $login_pwd ?>">
+                
             </fieldset>
-            <button type="submit">Post Time</button>
         </form>
     </body>
 </html>
