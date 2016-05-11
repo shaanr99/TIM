@@ -5,8 +5,10 @@
             $login_name = $_POST["uname"];
             $login_pwd = $_POST["upwd"];
 
-            $con = mysql_connect("localhost","shaanr", "T3stpil0t");
-            mysql_select_db("tim", $con);
+            // establish connection
+            $configData = parse_ini_file("config.ini");
+            $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+            mysql_selectdb($configData['dbname'],$con);
             
             if (!$con)
             {
@@ -21,6 +23,7 @@
                     $firstName = $row["firstName"];
                     $lastName = $row["lastName"];
                 }
+            mysql_close($con);
             }
             else {
                  die('Error logging in');
@@ -28,12 +31,21 @@
             // Get a list of activities that the user can select from
             function populateSelect()
             {
-                global $con;
-                $sql = "SELECT activityID, activityName FROM Activity";
+                $configData = parse_ini_file("config.ini");
+                $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+                mysql_selectdb($configData['dbname'],$con);
+                
+                if (!$con)
+                {
+                    printf('Could not connect' . mysql_error());
+                }
+
+                $sql = "CALL spGetAllActivities";
                 $activityList = mysql_query($sql, $con);
                 while ($row = mysql_fetch_assoc($activityList)){
-                        printf("<option value='" . $row["activityID"] . "'>" . $row["activityName"] . "</option>");
+                        echo "<option value='" . $row["activityID"] . "'>" . $row["activityDescription"] . "</option>";
                 }
+                mysql_close($con);
             }
         ?>
 

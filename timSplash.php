@@ -4,11 +4,11 @@
         <?php
             $login_name = $_POST["uname"];
             $login_pwd = $_POST["upwd"];
-    
-
-            $con = mysql_connect("localhost","shaanr", "T3stpil0t");
-            mysql_select_db("tim", $con);
             
+            // establish connection
+            $configData = parse_ini_file("config.ini");
+            $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+            mysql_selectdb($configData['dbname'],$con);
             
             $sql = "SELECT DISTINCT userID, firstName, lastName FROM Users WHERE userName = '$login_name' AND userPassword = '$login_pwd'";
             $results = mysql_query($sql, $con);

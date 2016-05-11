@@ -1,14 +1,16 @@
 <?php
             $username = $_POST["txtUserName"];
     
-
-            $con = mysql_connect("localhost","shaanr", "T3stpil0t");
-            mysql_select_db("tim", $con);
-            
+            // establish connection
+            $configData = parse_ini_file("config.ini");
+            $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+            mysql_selectdb($configData['dbname'],$con);
             if (!$con)
             {
                 printf('Could not connect' . mysql_error());
             }
+            
+            
             $sql = "CALL spCheckUsernameExists('$username')";
             $results = mysql_query($sql, $con);
             $num_rows = mysql_num_rows($results);
