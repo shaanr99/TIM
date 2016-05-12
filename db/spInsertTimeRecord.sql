@@ -3,10 +3,10 @@ DROP procedure IF EXISTS `spInsertTimeRecord`;
 
 DELIMITER $$
 USE `TIM`$$
-CREATE PROCEDURE `spInsertTimeRecord` (IN d int, IN u int, IN a int)
+CREATE PROCEDURE `spInsertTimeRecord` (IN uid int, IN startTime DATE, IN endTime DATE, IN activityID int)
 BEGIN
-	INSERT INTO TimeRecords (durationInSeconds, userID, activityID)
-    VALUES (d, u, a);
+	INSERT INTO TimeRecords (userID, startTime, endTime, activityID, createDate, createUID)
+    VALUES (uid, startTime, endTime, activityID, now(), uid);
 END
 $$
 

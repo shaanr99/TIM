@@ -3,6 +3,22 @@
     $activityID = $_POST["activity"];
     $stime = $_POST["startTime"];
     $etime = $_POST["endTime"];
+    
+    // establish connection
+    $configData = parse_ini_file("config.ini");
+    $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+    mysql_selectdb($configData['dbname'],$con);
+    
+    $sql = "CALL spInsertTimeRecord($userID, '$stime', '$etime', $activityID)";
+    echo $sql . '\n';
+    $results = mysql_query($sql, $con);
+    if (mysql_error($con)){
+        echo "Error inserting record " . mysql_error($con);
+    }
+    else {
+        echo "Data Entered.";
+    }
+    
 ?>
 
 <!DOCTYPE html>

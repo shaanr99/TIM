@@ -48,10 +48,28 @@
                 mysql_close($con);
             }
         ?>
-
-
         <meta charset="utf-8" />
         <title>Enter time for <?php echo $login_name ?></title>
+        <script>
+            var interval = setInterval(start, 1000);
+            var output;
+            
+            function init(){
+                document.getElementById("startTime").value = (new Date()).toLocaleString(); //.split(' ')[0];
+            }
+            
+            function start(){
+                d = new Date();
+                document.getElementById("output").innerHTML = d.toLocaleTimeString();
+            } // end init
+             
+            function stop(){
+                document.getElementById("endTime").value = (new Date()).toLocaleString(); //.split(' ')[0];
+                clearInterval(interval);
+            } // stop timer
+             
+        </script>
+        <link rel="stylesheet" type="text/css" href="mainstyle.css">
     </head>
     <body>
         <form action="postTime.php" method="POST">
@@ -61,10 +79,16 @@
                 <select name="activity">
                     <?php populateSelect(); ?>
                 </select>
+                
                 <label>Start Time: </label>
-                <input type="time" name="startTime">
+                <input id="startTime" type="datetime" step="1" name="startTime">
                 <label>End Time: </label>
-                <input type="time" name="endTime">
+                <input id="endTime" type="datetime" step="1" name="endTime">
+
+                <div id="output">empty</div>
+                <button type="button" class="button start" onclick="init()">Start</button>
+                <button type="button" class="button stop" onclick="stop()">Stop</button>
+
                 <input type="hidden" name="uid" value="<?php echo $uid ?>">
             </fieldset>
             <button type="submit">Post Time</button>
