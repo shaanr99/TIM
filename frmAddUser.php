@@ -1,5 +1,9 @@
 <?php
             $username = $_POST["txtUserName"];
+            $fname = $_POST["txtFirstName"];
+            $lname = $_POST["txtLastName"];
+            $pwd = $_POST["pwdPassword"];
+            $role = $_POST["selRoles"];
     
             // establish connection
             $configData = parse_ini_file("config.ini");
@@ -11,16 +15,16 @@
             }
             
             
-            $sql = "CALL spCheckUsernameExists('$username')";
-            $results = mysql_query($sql, $con);
-            $num_rows = mysql_num_rows($results);
-            echo "$num_rows Rows found\n";
+            $sql = "CALL spAddNewUser('$fname','$lname','$username','$pwd', '$role')";
+            mysql_query($sql, $con);
+            //$num_rows = mysql_num_rows($results);
+            //echo "$num_rows Rows found\n";
 
-            if (mysql_num_rows($results)>0){
-                printf('Username already exists.');
+            if (mysql_error($con)){
+                printf('Error adding user');
             }
             else {
-                 printf('Good to go.');
+                 printf('User Added');
             }
 
 ?>

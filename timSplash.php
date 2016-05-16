@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Core CSS - Include with every page -->
+        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/style.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/main-style.css" rel="stylesheet" />
         <?php
             $login_name = $_POST["uname"];
             $login_pwd = $_POST["upwd"];
@@ -36,17 +43,22 @@
     </head>
     <body>
         <form action="" method="POST" id="frmSelection">
-            <fieldset>
-                <legend>Please select an option from the list below</legend>
-                <input type="button" id="btnAddUser" value="Add New User" onclick="processClick('AddNewUser.php');" >
-                <input type="button" id="btnModifyUser" value="Change User Attributes" onclick="processClick('ModifyUser.php');">
-                <input type="button" id="btnEnterTime" value="Enter time" onclick="processClick('EnterTime.php');">
-                <input type="button" id="btnReports" value="View Reports" onclick="processClick('Reports.php');">
-                <input type="hidden" name="uid" value="<?php echo $uid ?>">
-                <input type="hidden" name="uname" value="<?php echo $login_name ?>">
-                <input type="hidden" name="upwd" value="<?php echo $login_pwd ?>">
-                
-            </fieldset>
-        </form>
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="text-align: center;">
+                        Please select from an option below
+                    </div>
+                    <div class="panel-body" style="text-align: center;">
+                        <p><button class="btn btn-primary btn-choicelist" type="button" id="btnAddUser" value="Add New User" onclick="processClick('AddNewUser.php');">Add New User</button></p>
+                        <p><button class="btn btn-success btn-choicelist" type="button" id="btnModifyUser" value="Change User Attributes" onclick="processClick('ModifyUser.php');">Change User Attributes</button></p>
+                        <p><button class="btn btn-info btn-choicelist" type="button" id="btnEnterTime" value="Enter time" onclick="processClick('EnterTime.php');">Enter Time</button></p>
+                        <p><button class="btn btn-warning btn-choicelist" type="button" id="btnReports" value="View Reports" onclick="processClick('Reports.php');">View Reports</button></p>
+                        <input type="hidden" name="uid" value="<?php echo $uid ?>">
+                        <input type="hidden" name="uname" value="<?php echo $login_name ?>">
+                        <input type="hidden" name="upwd" value="<?php echo $login_pwd ?>">
+                    </div>
+                </div>
+            </div>
+       </form>
     </body>
 </html>
