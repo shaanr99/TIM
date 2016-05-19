@@ -1,0 +1,23 @@
+var menustring = "";
+menustring += "<div id=\"custom-bootstrap-menu\" class=\"navbar navbar-default \" role=\"navigation\">";
+menustring += "    <div class=\"container-fluid\">";
+menustring += "        <div class=\"navbar-header\"><a class=\"navbar-brand\" href=\"http://channelramp.com/\">ChannelRamp</a>";
+menustring += "            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-menubuilder\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span>";
+menustring += "            </button>";
+menustring += "        </div>";
+menustring += "        <div class=\"collapse navbar-collapse navbar-menubuilder\">";
+menustring += "            <ul class=\"nav navbar-nav navbar-right\">";
+menustring += "                <li><a href=\"AddNewUser.php\">Add New User</a>";
+menustring += "                </li>";
+menustring += "                <li><a href=\"ModifyUser.php\">Change User</a>";
+menustring += "                </li>";
+menustring += "                <li><a href=\"EnterTime.php\">Enter Time</a>";
+menustring += "                </li>";
+menustring += "                <li><a href=\"Reports.php\">View Reports</a>";
+menustring += "                </li>";
+menustring += "            </ul>";
+menustring += "        </div>";
+menustring += "    </div>";
+menustring += "</div>";
+
+document.onload = document.getElementById("customNav").innerHTML = menustring;

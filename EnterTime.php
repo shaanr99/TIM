@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Core CSS - Include with every page -->
+        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/style.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/main-style.css" rel="stylesheet" />
         <?php
             $login_name = $_POST["uname"];
             $login_pwd = $_POST["upwd"];
@@ -72,26 +79,70 @@
         <link rel="stylesheet" type="text/css" href="mainstyle.css">
     </head>
     <body>
-        <form action="postTime.php" method="POST">
-            <fieldset>
-                <legend>Time record for <?php echo $firstName,  ' ',  $lastName ?></legend>
-                <label>Activity</label>
-                <select name="activity">
-                    <?php populateSelect(); ?>
-                </select>
-                
-                <label>Start Time: </label>
-                <input id="startTime" type="datetime" step="1" name="startTime">
-                <label>End Time: </label>
-                <input id="endTime" type="datetime" step="1" name="endTime">
+        <div class="container">
+            <div class="row">
+                <div class="nav" id="customNav"></div>
+                <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
+                  <img src="images/channelramp_logo.png" alt=""/>
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">                  
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Time record for <?php echo $firstName,  ' ',  $lastName ?></h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- form goes here -->
+                            <form action="postTime.php" method="POST">
+                                <table class="table">
+                                    <tr>
+                                        <td><label> Current Time:  </label></td>
+                                        <td><div id="output">empty</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Activity</label></td>
+                                        <td><select name="activity">
+                                            <?php populateSelect(); ?>
+                                        </select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Start Time: </label></td>
+                                        <td><input id="startTime" type="datetime" step="1" name="startTime"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>End Time: </label></td>
+                                        <td><input id="endTime" type="datetime" step="1" name="endTime"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">
+                                            <button type="button" class="btn btn-success btn-circle btn-lg text-center" onclick="init()"><i>Start</i></button>
+                                            <button type="button" class="btn btn-danger btn-circle btn-lg" onclick="stop()"><i>Stop</i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">
+                                            <button type="submit" class="btn btn-warning">Post Time</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">
+                                            <button type="reset" class="btn btn-default">Reset</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="uid" value="<?php echo $uid ?>">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Core Scripts - Include with every page -->
+        <script src="bs-siminta-admin/assets/plugins/jquery-1.10.2.js"></script>
+        <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+        
+        <script src="menu_load.js"></script>
+        
 
-                <div id="output">empty</div>
-                <button type="button" class="button start" onclick="init()">Start</button>
-                <button type="button" class="button stop" onclick="stop()">Stop</button>
-
-                <input type="hidden" name="uid" value="<?php echo $uid ?>">
-            </fieldset>
-            <button type="submit">Post Time</button>
-        </form>
     </body>
 </html>

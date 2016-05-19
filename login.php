@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
                   <img src="images/channelramp_logo.png" alt=""/>
-                    </div>
+                </div>
                 <div class="col-md-4 col-md-offset-4">
                     <div class="login-panel panel panel-default">                  
                         <div class="panel-heading">
@@ -47,7 +47,6 @@
         <script src="bs-siminta-admin/assets/plugins/jquery-1.10.2.js"></script>
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="bs-siminta-admin/assets/plugins/pace/pace.js"></script>
         <script src="bs-siminta-admin/assets/scripts/siminta.js"></script>
     </body>
 

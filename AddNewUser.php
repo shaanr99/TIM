@@ -101,7 +101,6 @@
         <script src="bs-siminta-admin/assets/plugins/jquery-1.10.2.js"></script>
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="bs-siminta-admin/assets/plugins/pace/pace.js"></script>
         <script src="bs-siminta-admin/assets/scripts/siminta.js"></script>
 
     </body>
