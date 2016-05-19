@@ -42,6 +42,8 @@
         </script>
     </head>
     <body>
+        <div class="nav" id="customNav"></div>
+
         <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
             <img src="images/channelramp_logo.png" alt=""/>
         </div>
@@ -72,5 +74,6 @@
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
         <script src="bs-siminta-admin/assets/scripts/siminta.js"></script>
+        <script src="menu_load.js"></script>
     </body>
 </html>

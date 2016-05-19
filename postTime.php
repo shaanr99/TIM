@@ -41,8 +41,12 @@
         <title>Post Time Success</title>
     </head>
     <body>
+        <div class="nav" id="customNav"></div>
         <p>UserID:  <?php echo $userID; ?></p>
         <p>ActivityID: <?php echo $activityID; ?></p>
         <p>Duration: <?php echo $stime . " - " . $etime ?> </p>
+        <script src="menu_load.js"></script>
     </body>
+
+
 </html>
