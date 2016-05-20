@@ -12,32 +12,35 @@
         <link href="bs-siminta-admin/assets/css/style.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/css/main-style.css" rel="stylesheet" />
         <?php
-            //$login_name = $_POST["uname"];
-            //$login_pwd = $_POST["upwd"];
-            //
-            //// establish connection
-            //$configData = parse_ini_file("config.ini");
-            //$con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
-            //mysql_selectdb($configData['dbname'],$con);
-            //
-            //if (!$con)
-            //{
-            //    printf('Could not connect' . mysql_error());
-            //}
-            //
-            //$sql = "SELECT DISTINCT userID, firstName, lastName FROM Users WHERE userName = '$login_name' AND userPassword = '$login_pwd'";
-            //$results = mysql_query($sql,$con);
-            //if (mysql_num_rows($results) > 0){
-            //    while ($row = mysql_fetch_assoc($results)){
-            //        $uid = $row["userID"];
-            //        $firstName = $row["firstName"];
-            //        $lastName = $row["lastName"];
-            //    }
-            //mysql_close($con);
-            //}
-            //else {
-            //     die('Error logging in');
-            //}
+            // This piece is in here only because the production server
+            // does not appear to manage sessions the same way that
+            // the development environment does ...
+            $uid = $_POST['uid'];
+            
+            // establish connection
+            $configData = parse_ini_file("config.ini");
+            $con = mysql_connect($configData['host'],$configData['user'], $configData['pwd']);
+            mysql_selectdb($configData['dbname'],$con);
+            
+            if (!$con)
+            {
+                printf('Could not connect' . mysql_error());
+            }
+            
+            $sql = "SELECT DISTINCT userID, firstName, lastName FROM Users WHERE userID = '$uid'";
+            $results = mysql_query($sql,$con);
+            if (mysql_num_rows($results) > 0){
+                while ($row = mysql_fetch_assoc($results)){
+                    $uid = $row["userID"];
+                    $firstName = $row["firstName"];
+                    $lastName = $row["lastName"];
+                }
+            mysql_close($con);
+            }
+            else {
+                 die('Error logging in');
+            }
+            
             // Get a list of activities that the user can select from
             function populateSelect()
             {
@@ -59,7 +62,7 @@
             }
         ?>
         <meta charset="utf-8" />
-        <title>Enter time for <?php echo $login_name ?></title>
+        <title>Enter time for <?php print( $firstName . ' ' . $lastName) ; ?></title>
         <script>
             var interval = setInterval(start, 1000);
             var output;
@@ -79,7 +82,6 @@
             } // stop timer
              
         </script>
-        <link rel="stylesheet" type="text/css" href="mainstyle.css">
     </head>
     <body>
         <div class="nav" id="customNav"></div>
@@ -87,7 +89,7 @@
           <img src="images/channelramp_logo.png" alt=""/>
         </div>
          <div style="padding:10px; margin: 10px;">
-            <p class="lead">Time record for <?php echo $_SESSION['fname'],  ' ',  $_SESSION['lname'] ?></p>
+            <p class="lead">Time record for <?php print( $firstName . ' ' . $lastName) ; ?></p>
             <form action="postTime.php" method="POST">
                 <table class="table">
                     <tr>
@@ -125,7 +127,7 @@
                         </td>
                     </tr>
                 </table>
-                <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">
+                <input type="hidden" name="uid" value="<?php echo $uid ?>">
             </form>
         </div>
         <!-- Core Scripts - Include with every page -->

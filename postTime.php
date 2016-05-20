@@ -29,7 +29,7 @@
         echo "Error inserting record " . mysql_error($con);
     }
     else {
-        echo "Data Entered.";
+        //echo "Data Entered.";
     }
     
 ?>
@@ -37,6 +37,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Core CSS - Include with every page -->
+        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/style.css" rel="stylesheet" />
+        <link href="bs-siminta-admin/assets/css/main-style.css" rel="stylesheet" />        
         <meta charset="utf-8" />
         <title>Post Time Success</title>
     </head>
@@ -47,6 +54,4 @@
         <p>Duration: <?php echo $stime . " - " . $etime ?> </p>
         <script src="menu_load.js"></script>
     </body>
-
-
 </html>
