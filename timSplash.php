@@ -1,4 +1,9 @@
+<?php
+    session_unset();
+    session_start();
+?>
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <!-- Core CSS - Include with every page -->
@@ -24,8 +29,13 @@
                 die('Error logging in');
             }
             else {
-                while ($row = mysql_fetch_assoc($results)){}
-                $uid = $row['userID'];
+                while ($row = mysql_fetch_assoc($results)){
+                    $uid = $row['userID'];
+                    $_SESSION['uid'] = $uid;
+                    $_SESSION['uname'] = $login_name;
+                    $_SESSION['fname'] = $row["firstName"];
+                    $_SESSION['lname'] = $row["lastName"];
+                }
             }
 
         ?>
