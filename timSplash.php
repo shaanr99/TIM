@@ -1,5 +1,4 @@
 <?php
-    session_save_path(realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../session'));
     session_start();
 ?>
 <!DOCTYPE html>
@@ -7,7 +6,7 @@
 <html lang="en">
     <head>
         <!-- Core CSS - Include with every page -->
-        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="css/overridestyle.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -31,13 +30,14 @@
             else {
                 while ($row = mysql_fetch_assoc($results)){
                     $uid = $row['userID'];
+                    session_start();
                     $_SESSION['uid'] = $uid;
                     $_SESSION['uname'] = $login_name;
                     $_SESSION['fname'] = $row["firstName"];
                     $_SESSION['lname'] = $row["lastName"];
+                    
                 }
             }
-
         ?>
 
 
@@ -52,6 +52,7 @@
         </script>
     </head>
     <body>
+        <?php print_r($_SESSION); ?>
         <div class="nav" id="customNav"></div>
 
         <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
@@ -84,6 +85,6 @@
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
         <script src="bs-siminta-admin/assets/scripts/siminta.js"></script>
-        <script src="menu_load.js"></script>
+        <script src="js/menu_load.js"></script>
     </body>
 </html>

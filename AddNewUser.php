@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <!-- Core CSS - Include with every page -->
-        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="css/overridestyle.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -35,7 +35,7 @@
             }
         
         ?>
-        <script src="addUser.js"></script>
+        <script src="js/addUser.js"></script>
     </head>
     <body>
         <div class="nav" id="customNav"></div>
@@ -106,7 +106,7 @@
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
         <script src="bs-siminta-admin/assets/scripts/siminta.js"></script>
-        <script src="menu_load.js"></script>
+        <script src="js/menu_load.js"></script>
 
     </body>
 </html>

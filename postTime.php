@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     $ESTTZ = new DateTimeZone('America/New_York');
 
     $userID = $_POST["uid"];
@@ -38,7 +40,7 @@
 <html lang="en">
     <head>
         <!-- Core CSS - Include with every page -->
-        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="css/overridestyle.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -52,6 +54,6 @@
         <p>UserID:  <?php echo $userID; ?></p>
         <p>ActivityID: <?php echo $activityID; ?></p>
         <p>Duration: <?php echo $stime . " - " . $etime ?> </p>
-        <script src="menu_load.js"></script>
+        <script src="js/menu_load.js"></script>
     </body>
 </html>

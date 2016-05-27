@@ -8,7 +8,7 @@
     <head>
         <title>Logout</title>
         <!-- Core CSS - Include with every page -->
-        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="css/overridestyle.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -25,6 +25,6 @@
                 </div>
             </div>
 
-        <script src="menu_load.js"></script>
+        <script src="js/menu_load.js"></script>
     </body>
 </html>

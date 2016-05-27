@@ -1,11 +1,12 @@
 <?php
     session_start();
 ?>
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Core CSS - Include with every page -->
-        <link href="overridestyle.css" rel="stylesheet" />
+        <link href="css/overridestyle.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="bs-siminta-admin/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -84,12 +85,13 @@
         </script>
     </head>
     <body>
+        <?php print_r($_SESSION); ?>
         <div class="nav" id="customNav"></div>
         <div class="">
           <img src="images/channelramp_logo.png" alt=""/>
         </div>
          <div style="padding:10px; margin: 10px;">
-            <p class="lead">Time record for <?php print( $firstName . ' ' . $lastName) ; ?></p>
+            <p class="lead">Time record for <?php print( $firstName . ' ' . $lastName) ; print($_SESSION['test']); ?></p>
             <form action="postTime.php" method="POST">
                 <table class="table">
                     <tr>
@@ -135,7 +137,7 @@
         <script src="bs-siminta-admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="bs-siminta-admin/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
         
-        <script src="menu_load.js"></script>
+        <script src="js/menu_load.js"></script>
         
 
     </body>

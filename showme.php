@@ -1,0 +1,1 @@
+<? system("cat /web/conf/php5.ini"); ?>

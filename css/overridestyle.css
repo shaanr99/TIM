@@ -9,7 +9,7 @@
 }
 
 /* MENU BAR */
-#custom-bootstrap-menu.navbar-default .navbar-brand {
+/*#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(235, 235, 235, 1);
 }
 #custom-bootstrap-menu.navbar-default {
@@ -46,4 +46,4 @@
 #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #000000;
-}
+}*/

@@ -218,3 +218,18 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-05-12  8:52:06
+
+CREATE  OR REPLACE VIEW `selectTimesByActivity` AS
+SELECT 
+	tr.itemRecordID,
+    tr.userID,
+    tr.startTime,
+    tr.endTime,
+    tr.activityID,
+    a.activityDescription,
+    TIMESTAMPDIFF(SECOND, tr.startTime, tr.endTime)  duration
+FROM TimeRecords tr
+LEFT JOIN Activity a ON tr.activityID = a.activityID;
+ 
+
+;
