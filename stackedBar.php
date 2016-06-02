@@ -68,6 +68,7 @@
                     }]
                 }
             }
+
         });
 </script>
     <!-- Core Scripts - Include with every page -->
